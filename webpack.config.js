@@ -5,10 +5,31 @@ var HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
     inject: 'body'
 });
 
+module.exports = {
+  entry: [
+    './src/index.js'
+  ],
+  output: {
+    path: __dirname,
+    publicPath: '/',
+    filename: 'bundle.js'
+  },
+  module: {
+    loaders: [{
+      test: /\.js$/,
+      exclude: /node_modules/,
+      loader: 'babel-loader',
+      query: {
+        presets: ['es2015', 'react']
+      }
+    }]
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  }
+};
 
-var port = process.env.PORT || 8080;
-var host = process.env.IP || '127.0.0.1';
-
+/*
 module.exports = {
     entry: __dirname + '/app/index.js',
     module: {
@@ -21,13 +42,11 @@ module.exports = {
         ]
     },
     output: {
-        filename: 'transformed.js',
-        path: __dirname + '/build'
+    path: __dirname,
+    publicPath: '/',
+    filename: 'bundle.js'
     },
-    plugins: [HTMLWebpackPluginConfig],
-      devServer: {
-    port: port,
-    host: host
-  }
+    plugins: [HTMLWebpackPluginConfig]
 };
 
+*/
