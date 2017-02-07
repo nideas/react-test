@@ -9751,7 +9751,7 @@ var App = React.createClass({
         return React.createElement(
             'div',
             null,
-            'hej'
+            'Cloud9 React config and test before Heroku deploy.'
         );
     }
 });
